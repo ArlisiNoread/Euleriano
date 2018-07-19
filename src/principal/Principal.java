@@ -10,7 +10,7 @@ public class Principal {
         ArrayList<Vertice> grafo = new ArrayList<>();
 
         ArrayList<String> rutas;
-        
+
         Euleriano operaciones = new Euleriano();
 
         grafo = operaciones.obtenerGrafo();
@@ -25,14 +25,18 @@ public class Principal {
 
         System.out.println("El grafo contiene " + operaciones.numeroDeAristas(grafo) + " aristas");
 
-        System.out.println("El grafo contiene circuito euleriano: " + operaciones.verificadorCircuitoEuleriano(grafo));
-        
-        rutas = operaciones.rutasPosiblesEulerianas(grafo);
-        
-        System.out.println("Número de rutas: " + rutas.size());
-        
-        for (int i = 0; i < rutas.size(); i++) {
-            System.out.println(rutas.get(i));
+        boolean verificadorCircuito = operaciones.verificadorCircuitoEuleriano(grafo);
+
+        System.out.println("El grafo contiene circuito euleriano: " + verificadorCircuito);
+
+        if (verificadorCircuito) {
+            rutas = operaciones.rutasPosiblesEulerianas(grafo);
+
+            System.out.println("Número de rutas: " + rutas.size());
+
+            for (int i = 0; i < rutas.size(); i++) {
+                System.out.println(rutas.get(i));
+            }
         }
 
     }
